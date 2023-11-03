@@ -34,7 +34,7 @@ const App = () => {
 
 
 	React.useEffect(() => {
-    console.log(1121212121212212212)
+    console.log('njjnjfjjnfejndjenjdnjenjdejdenjdej')
 		
 		dispatch(trys())
 		if(data.accessToken){
@@ -50,37 +50,7 @@ const App = () => {
 	}, [])
 	return (
 		<div className='App'>
-				{alert.state &&  (
-				
-				<div className={'alert '+ alert.type}>
-					{alert.type === 'error'&& <strong>Ошибка!</strong> }
-					
-					{alert.text }
-					<div className='close-alert' onClick={()=>[	dispatch({
-						type: types.CLOSE_ALERT,
-						payload:{}
-							
-		})]}></div>
-					
-				</div>
-			) }
-			{data.loading ? <Loader /> : <></> }
-
-<Routes>
-       <Route path="/" element = {<>
-	
-			<div className={`container ${type === 'reg' ? 'reg-panel-active' : ''}`}>
-			
-
-			
-
-				 <Auth setType={setType} />
-			</div></>} />
-       <Route path="/user" element = {<User/> } />
-
-
-   </Routes>
-		
+				822eh2ihie289heeeeeeeeeeeeeeeeeeeeeeedchuh3bb4
 		</div>
 		
 
