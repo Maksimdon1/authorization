@@ -63,7 +63,7 @@ const App = () => {
 					
 				</div>
 			) }
-			{data.loading ? <Loader /> : <></> && <Auth setType={setType} />}
+			{data.loading ? <Loader /> : <></> }
 
 <Routes>
        <Route path="/" element = {<>
