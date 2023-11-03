@@ -1,88 +1,51 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import Auth from './Auth'
-import * as types from './store/types'
-import Loader from './Loader'
-import Reg from './Reg'
-import './style.css'
-import User from './user' 
-import { Routes, Route} from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
-import { getNewAccessToken, logout, trys } from './store/actions'
+
+import './App.css';
+import  Catalog  from './components/katalog';
+import {About} from './components/about'
+import {User} from './components/user'
+import {Home} from './components/home'
+import {Header} from './components/header.jsx'
+import BottomHeader from './components/BottomHeader'; 
+import Product from './components/product';
+import {Basket} from './components/basket';
+import { Routes, Route, Navigate} from 'react-router-dom';
+import NotFound from './components/NotFound';
+import DopUserPages from './components/dopUserPages';
+import Test from './components/TEST/Test.jsx';
+import Chart from "chart.js/auto";
+import { CategoryScale } from "chart.js";
+import House from './components/TEST/house';
 
 
-const App = () => {
-	const [type, setType] = React.useState('auth')
-	const dispatch = useDispatch()
-	let navigate = useNavigate(); 
+function App() {
 
-
-	const data = useSelector(
-		state => state.userLogin
-	)
-	console.log(data)
-	const alert =  useSelector(
-		state => state.AlertReducer
-	)
-	console.log(alert)
-
-	
+  return (
+    <>
 
 
 
 
 
 
-	React.useEffect(() => {
-		
-		dispatch(trys())
-		if(data.accessToken){
-			dispatch(getNewAccessToken())
-			if(!alert.state){
-			navigate('/user')
-			}
-		}
-		// if (userInfo && !accessToken) {data.
-		
-		// 	dispatch(getNewAccessToken())
-		// }
-	}, [])
-	return (
-		<div className='App'>
-				{alert.state &&  (
-				
-				<div className={'alert '+ alert.type}>
-					{alert.type === 'error'&& <strong>Ошибка!</strong> }
-					
-					{alert.text }
-					<div className='close-alert' onClick={()=>[	dispatch({
-						type: types.CLOSE_ALERT,
-						payload:{}
-							
-		})]}></div>
-					
-				</div>
-			) }
 
 <Routes>
-       <Route path="/" element = {<>
-	
-			<div className={`container ${type === 'reg' ? 'reg-panel-active' : ''}`}>
-			
+       <Route path="/" element = {  <><Header/>  <Home/></>} />
+       <Route path="/house" element = {  <><House/></>} />
+       <Route path="/test" element = {<Test/>} />
+       <Route path="/user" element = {  <User/>} />
+       <Route path="/product/:url" element = {   <Product/> } />
+       <Route path="/about" element = {   <About/>} />
+       <Route path="/catalog" element = {   <Catalog/>} />
+       <Route path="/basket" element = {   <Basket/>} />
+       <Route path="/user/info" element = {   <DopUserPages/>} />
+       <Route path='*' element={ <NotFound/>} />
 
-			
-
-				 <Auth setType={setType} />
-			</div></>} />
-       <Route path="/user" element = {<User/> } />
-
+       <Route path="*" element={<Navigate to="/" />} />
    </Routes>
-		
-		</div>
-		
 
-
-   	)
+   <BottomHeader/>
+    </>
+  );
 }
 
-export default App
+export default App;
