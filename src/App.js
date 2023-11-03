@@ -34,6 +34,7 @@ const App = () => {
 
 
 	React.useEffect(() => {
+    console.log(1121212121212212212)
 		
 		dispatch(trys())
 		if(data.accessToken){
